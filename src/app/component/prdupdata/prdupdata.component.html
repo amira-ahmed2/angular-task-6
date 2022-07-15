@@ -1,0 +1,24 @@
+<p> updata works!</p>
+<div class="container-fluid">
+  <div class="form-group mb-3">
+    <label for="name"> product name:</label>
+    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="prod.name">
+  </div>
+<div class="form-group mb-3">
+  <label for="quantity"> product quantity:</label>
+  <input type="number" class="form-control" name="quantity" id="quantity" [(ngModel)]="prod.quantity">
+</div>
+<div class="form-group mb-3">
+  <label for="price"> product price:</label>
+  <input type="number" class="form-control" name="price" id="price" [(ngModel)]="prod.price">
+</div>
+
+<div class="form-group mb-3">
+  <label for="img"> product img:</label>
+  <input type="text" class="form-control" name="img" id="img" [(ngModel)]="prod.img" >
+</div>
+<div class="form-group mb-3">
+<button type="submit" class="btn btn-info" (click)="updatapro()">updata</button>
+</div>
+</div>
+

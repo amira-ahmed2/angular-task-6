@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<!-- <button (click)="Insertnewpro()">submit</button> -->
+<form #prdform="ngForm" (ngSubmit)="Insertnewpro()">
+  <div class="mb-3">
+    <label for="prdName" class="form-label">Product Name</label>
+
+    <input type="text"  class="form-control" name="prdName" id="prdName" [(ngModel)]="newprd.name" required pattern="[A-Za-z0-9]{3,10}" #prdname="ngModel" >
+
+    <div class="alert alert-danger" [hidden]="prdname.valid ||prdname.untouched">
+        <small *ngIf="prdname.errors?.['required']">
+            Product Name is required
+        </small>
+        <small *ngIf="prdname.errors?.['pattern']">
+            Product Name must be 3 letters at least
+        </small>
+    </div>
+
+  </div>
+
+
+  <div class="mb-3">
+    <label for="prdQuant" class="form-label">Quantity</label>
+    <input type="number" class="form-control" name="prdQuant" id="prdQuant" [(ngModel)]="newprd.quantity" required pattern="[0-9]{1,5}" #prdquantity="ngModel">
+    <div class="alert alert-danger" [hidden]="prdquantity.valid ||prdquantity.untouched">
+      <small *ngIf="prdquantity.errors?.['required']">
+          Product quantity is required
+      </small>
+      <small *ngIf="prdquantity.errors?.['pattern']">
+          Product quantity must be 5 number at more
+      </small>
+  </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="prdPrc" class="form-label">Price</label>
+    <input type="number" class="form-control" name="prdPrc" id="prdPrc" [(ngModel)]="newprd.price" required pattern="[0-9]{3,5}" #prdprice="ngModel">
+    <div class="alert alert-danger" [hidden]="prdprice.valid ||prdprice.untouched">
+      <small *ngIf="prdprice.errors?.['required']">
+          Product price is required
+      </small>
+      <small *ngIf="prdprice.errors?.['pattern']">
+          Product price must be between 3 : 12 numbers
+      </small>
+
+  </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="prdCat" class="form-label">Select Category</label>
+    <select  class="form-control" name="prdCat" id="prdCat" [(ngModel)]="newprd.cateogryid" #prdcateogryid="ngModel" required>
+      <option *ngFor="let itemcat of CategoryList" [value]="itemcat.id">
+        {{itemcat.name}}
+      </option>
+      <div class="alert alert-danger" [hidden]="prdcateogryid.valid ||prdcateogryid.untouched">
+        <small *ngIf="prdcateogryid.errors?.['required']">
+            Product price is required
+        </small></div>
+    </select>
+  </div>
+
+
+  <button type="submit" class="btn btn-success" [disabled]="prdform.invalid">Submit</button>
+</form>
+<div>
+  <h1>
+    {{newprd|json}}
+  </h1>
+</div>

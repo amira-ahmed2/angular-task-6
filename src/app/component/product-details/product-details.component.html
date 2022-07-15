@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<div class="card" style="width:18rem;">
+    <img [src]="prd?.img" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{prd?.name}}</h5>
+        <p class="card-text">Price:{{prd?.price}} </p>
+        <p class="card-text">Quantity:{{prd?.quantity}}</p>
+    </div>
+    <div class="btn-group">
+        <!-- <button class="btn btn-danger" (click)="goprev()" [disabled]="currendondex==proidlist[0]">Previous</button> -->
+        <button class="btn btn-dark" (click)="goback()">Go Back</button>
+        <!-- <button class="btn btn-warning" (click)="gonext()" [disabled]="currendondex==proidlist[proidlist.length-1]">Next TO</button> -->
+
+    </div>
+</div>

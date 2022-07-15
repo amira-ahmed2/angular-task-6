@@ -1,0 +1,58 @@
+<!-- property binding name routerLink -->
+<a class="btn btn-outline-secondary m-2" [routerLink]="['/NewProduct']">New_Add_Product</a>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">quantity</th>
+            <th scope="col">price</th>
+            <th scope="col">img</th>
+            <th scope="col">count</th>
+            <th scope="col">delete</th>
+            <th scope="col">edit/add</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        <ng-container *ngFor="let item of prodListOfCateg;trackBy:itemfun">
+
+            <tr [ngStyle]="{'background-color':(item.quantity>1)?'#eaedf2':'lightyellow'}">
+                <td>{{item.name}}</td>
+                <td>
+                    <!-- <ng-container *ngIf="item.quantity>0 else cheackQuntity">{{item.quantity}}</ng-container>
+                    <ng-template #cheackQuntity>out of stock</ng-template> -->
+                    <ng-container [ngSwitch]="item.quantity">
+                        <ng-container *ngSwitchCase="0">Out of stock</ng-container>
+                        <ng-container *ngSwitchCase="1">Last Item!</ng-container>
+                        <ng-container *ngSwitchCase="2">Last 2 Item!</ng-container>
+                        <ng-container *ngSwitchDefault>{{item.quantity}}</ng-container>
+
+                    </ng-container>
+                </td>
+                <td>{{item.price}}</td>
+                <td><img class="img" style="width: 8rem;" [src]="item.img" appStyleBox name="idc" (click)=" updatatocart4(item.id)"></td>
+                <td><button class="btn btn-primary" [disabled]="item.quantity==0">Addcart</button></td>
+                <td><button class="btn btn-primary" (click)="deleteproduct(item.id)">delete</button></td>
+
+                <td><button class="btn btn-primary" (click)="editproduct(item.id)" >edit/add</button></td>
+            </tr>
+            <!-- <tr *ngIf="item.CateogryID==selectCategoryId" [hidden]="item.quantity==0" [ngStyle]="{'background-color':(item.quantity>1)?'#eaedf2':'lightyellow'}">
+                <td>{{item.name}}</td>
+                <td>
+                    <ng-container *ngIf="item.quantity>1 else cheackQuntity">{{item.quantity}}</ng-container>
+                    <ng-template #cheackQuntity>last item</ng-template>
+                </td>
+                <td>{{item.price}}</td>
+                <td><img class="img" style="width: 8rem;" [src]="item.img" appStyleBox></td>
+                <td>
+                    <button [disabled]="item.quantity==0">AddCart</button>
+                </td>
+
+            </tr> -->
+
+        </ng-container>
+
+
+    </tbody>
+</table>

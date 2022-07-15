@@ -1,0 +1,46 @@
+<div class="mb-3">
+    <select id="categry" [(ngModel)]="selectcardid">
+      <option value="0">All</option>
+  <option *ngFor="let itemcat of CategoryList;trackBy:itemfuncat"
+  [value]="itemcat.id">{{itemcat.name}}</option>
+</select></div>
+
+<app-product [resreivedCatID]="selectcardid">
+</app-product>
+<!-- <app-product (card)="ontotalcartchanged($event)"></app-product> -->
+<!-- <table class="table">
+    <thead class="table-dark">
+        <tr class="text-capitalize">
+            <th scope="col">Name</th>
+            <th scope="col">count</th>
+            <th scope="col">price</th>
+            <th scope="col">img</th>
+            <th scope="col">TotalPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tbody>
+            <ng-container *ngFor="let item of recervedtotaldetalis; ">
+                <tr *ngFor="let w of item">
+                    <td>{{w.name}}</td>
+                    <td>
+                        <ng-container *ngIf="w.quantity>1 else cheackQuntity">
+                            {{w.quantity}}</ng-container>
+                        <ng-template #cheackQuntity>last item</ng-template>
+                    </td>
+                    <td>{{w.price|currency:'EGP'}}</td>
+                    <td>
+                        <div><img class="img" style="width: 8rem;" [src]="w.img"></div>
+                    </td>
+                    <td>{{w.price*1|currency:'EGP'}}</td>
+
+                </tr>
+            </ng-container>
+        </tbody>
+</table> -->
+<!-- </app-product> -->
+
+<!-- <h1>Total price : {{recervedtotalPrice}}</h1> -->
+
+
+<!-- card -->
