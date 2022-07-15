@@ -74,7 +74,9 @@ if(confirm("do is delete this product?")){
     }
 }
 editproduct(id:number){
-  this.router.navigate(['./edit',id])
+  // this.router.navigate(['./edit',id])
+  this.router.navigate(['./NewProduct',id])
+
 
 }
 

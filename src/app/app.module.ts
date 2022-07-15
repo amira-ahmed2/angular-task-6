@@ -17,7 +17,6 @@ import { ProductDetailsComponent } from './component/product-details/product-det
 import { HttpClientModule } from '@angular/common/http';
 import { AddproductComponent } from './component/admin/addproduct/addproduct.component';
 import { RegisteruserComponent } from './component/registeruser/registeruser.component';
-import { PrdupdataComponent } from './component/prdupdata/prdupdata.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +32,6 @@ import { PrdupdataComponent } from './component/prdupdata/prdupdata.component';
     ProductDetailsComponent,
     AddproductComponent,
     RegisteruserComponent,
-    PrdupdataComponent,
   ],
   imports: [
     BrowserModule,

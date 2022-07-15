@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductapiService } from 'src/app/services/productapi.service';
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute} from '@angular/router';
 import { IProduct } from './../../../models/iproduct';
 import { ICategory } from './../../../models/icategory';
 
@@ -13,12 +13,28 @@ export class AddproductComponent implements OnInit {
   CategoryList:ICategory[]=[]
 // selectcardid:number=0;
 newprd:IProduct = {} as IProduct;
-  constructor(private router:Router ,private proservicrapi:ProductapiService) { }
+val:any;
+
+  constructor(private router:Router ,private proservicrapi:ProductapiService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.proservicrapi.getallcategory().subscribe(plist=>{
       this.CategoryList=plist
     })
+    // ubdata
+    let sub =this.route.params.subscribe(params=>{
+      this.val=params['id']
+    })
+    console.log(this.val)
+    this.proservicrapi.getupdateproduct(this.val).subscribe(data=>{
+      this.newprd=data
+    })
+  }
+  updatapro(){
+    this.proservicrapi.updateproduct(this.newprd).subscribe(da=>{
+
+    });
+    this.router.navigate(['All'])
   }
   Insertnewpro(){
 
@@ -30,6 +46,14 @@ newprd:IProduct = {} as IProduct;
         alert(err)
       }
     })
+  }
+  change(){
+    if (this.newprd.id) {
+      this.updatapro()
+    }else{
+      this.Insertnewpro()
+    }
+
   }
 
 }
